@@ -60,8 +60,8 @@ sequenceDiagram
 
 ```bash
 # Клонируй и запускай
-git clone <repository-url>
-cd spring-annotations-deep-dive
+git clone https://github.com/yusdesign/java-spring-deep-dive.git
+cd java-spring-deep-dive
 ./gradlew bootRun
 ```
 
