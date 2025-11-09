@@ -1,14 +1,15 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.1.0'
-    id 'io.spring.dependency-management' version '1.1.0'
+    id 'org.springframework.boot' version '3.5.7'  // ← Новая версия
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.annotationlessons'
 version = '1.0.0'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '21'  // ← Java 21
+    targetCompatibility = '21'
 }
 
 repositories {

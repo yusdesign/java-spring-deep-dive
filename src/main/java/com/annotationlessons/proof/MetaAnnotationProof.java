@@ -24,20 +24,32 @@ public class MetaAnnotationProof {
         System.out.printf("%n%s:%n", name);
         printAnnotationTree(annotationClass, "");
     }
-    
+
     private static void printAnnotationTree(Class<? extends Annotation> annotationClass, String prefix) {
         Annotation[] metas = annotationClass.getAnnotations();
-        
+    
+        // ДОБАВЬ ПРОВЕРКУ НА ПОВТОРЫ!
         if (metas.length == 0) {
             System.out.printf("%s└── %s (корень)%n", prefix, annotationClass.getSimpleName());
             return;
         }
         
-        System.out.printf("%s├── %s%n", prefix, annotationClass.getSimpleName());
-        for (int i = 0; i < metas.length; i++) {
-            boolean isLast = i == metas.length - 1;
-            String newPrefix = prefix + (isLast ? "    " : "│   ");
-            printAnnotationTree(metas[i].annotationType(), newPrefix);
+        // ДОБАВЬ ПРОВЕРКУ ГЛУБИНЫ РЕКУРСИИ
+        if (prefix.length() > 100) { // ограничиваем глубину
+            System.out.printf("%s└── ... (глубина ограничена)%n", prefix);
+            return;
         }
+    
+        System.out.printf("%s├── %s%n", prefix, annotationClass.getSimpleName());
+            for (int i = 0; i < metas.length; i++) {
+                boolean isLast = i == metas.length - 1;
+                String newPrefix = prefix + (isLast ? "    " : "│   ");
+        
+                // Пропусти аннотации, которые уже видели (предотвращение циклов)
+                if (!annotationClass.getSimpleName().equals(metas[i].annotationType().getSimpleName())) {
+                    printAnnotationTree(metas[i].annotationType(), newPrefix);
+                
+                }
+            }
+        }    
     }
-}
