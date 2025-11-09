@@ -85,18 +85,18 @@ ControllerClass.class.isAnnotationPresent(Component.class);
 
 ```mermaid
 graph TB
-    A[@Target] --> B[@Retention]
+    A["@Target"] --> B["@Retention"]
     B --> A
-    C[@Documented] --> A
+    C["@Documented"] --> A
     C --> B
     
-    D[@Component] --> A
+    D["@Component"] --> A
     D --> B
     D --> C
     
-    E[@Service] --> D
-    F[@Repository] --> D  
-    G[@Controller] --> D
+    E["@Service"] --> D
+    F["@Repository"] --> D  
+    G["@Controller"] --> D
     
     class A,B,C metaAnnotations
     class D baseAnnotation
