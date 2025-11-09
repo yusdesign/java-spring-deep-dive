@@ -39,8 +39,9 @@ spring-annotations-deep-dive/
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/your-username/spring-annotations-deep-dive.git
-cd spring-annotations-deep-dive
+
+git clone https://github.com/yusdesign/java-spring-deep-dive.git
+cd java-spring-deep-dive
 
 # Сборка и запуск
 ./gradlew bootRun
